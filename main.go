@@ -17,7 +17,7 @@ func main() {
 	args := os.Args
 
 	if len(args) < 4 {
-		fatal("Usage: bs4bf filename range_start range_end pattern ")
+		fatal("Usage: bs4bf filename range_start range_end pattern\n")
 	}
 
 	filename := args[1]
