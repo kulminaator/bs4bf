@@ -72,9 +72,13 @@ func binarySearchFilePosition(file *os.File, fileSize int64, searchStart string,
 		if linePrefix < searchStart {
 			debug("Seeking forward from> %s \n", truncateString(linePrefix, 25))
 			seekPosition = seekPosition + seekSize
-		} else {
+		} else if linePrefix > searchEnd {
 			debug("Seeking backwards from> %s \n", truncateString(linePrefix, 25))
 			seekPosition = seekPosition - seekSize
+		} else {
+			// We found a line within our target range, we can stop here
+			debug("Found position in range: %s \n", truncateString(linePrefix, 25))
+			break
 		}
 	}
 
